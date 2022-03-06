@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.southwind.repository.StudentRepository">
+
+    <!-- List<Student> findAll();-->
+    <select id="findAll" resultType="Student">  <!-- 这里的resultType本来是要全类名的，是因为用了别名 -->
+        SELECT * FROM student
+    </select>
+
+    <!-- Student findById(Long id); -->
+    <select id="findById" parameterType="java.lang.Long" resultType="student">
+        SELECT * FROM student WHERE id = #{id}
+    </select>
+
+    <!-- void save(Student student); -->
+    <insert id="save" parameterType="Student">
+        INSERT INTO student(name,score,birthday) VALUES (#{name},#{score},#{birthday}) <!--这里是因为数据库中的student id属性设置了自增 -->
+    </insert>
+
+    <!-- void update(Student student); -->
+    <update id="update" parameterType="Student">
+        UPDATE student SET NAME =#{name},score = #{score},birthday = #{birthday} WHERE id = #{id}
+    </update>
+
+    <!-- void deleteById(Long id);-->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM student WHERE id = #{id}
+    </delete>
+
+</mapper>

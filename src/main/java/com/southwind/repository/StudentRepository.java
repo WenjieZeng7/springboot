@@ -1,6 +1,7 @@
 package com.southwind.repository;
 
 import com.southwind.entity.Student;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.List;
@@ -10,8 +11,9 @@ import java.util.List;
  * @create 2022-03-05 21:57
  */
 public interface StudentRepository {
-    public Collection<Student> findAll();
-    public Student findById(long id);
-    public void saveOrUpdate(Student student);
-    public void deleteById(long id);
+    List<Student> findAll();
+    Student findById(Long id);
+    void save(Student student);
+    void update(Student student);
+    void deleteById(Long id);
 }
